@@ -42,9 +42,9 @@
                                              alt="">
                                      </div>
                                      <div class="detail-box">
-                                         <h5>
-                                             {{ $burger->name }}
-                                         </h5>
+                                        <a href="{{route('product.show',['product' => $burger->slug])}}">
+                                            {{ $burger->name }}
+                                        </a>
                                          <p>
                                              {{ $burger->description }}
                                          </p>
@@ -93,9 +93,9 @@
                                              alt="">
                                      </div>
                                      <div class="detail-box">
-                                         <h5>
-                                             {{ $pizza->name }}
-                                         </h5>
+                                          <a href="{{route('product.show',['product' => $pizza->slug])}}">
+                                            {{ $pizza->name }}
+                                        </a>
                                          <p>
                                              {{ $pizza->description }}
                                          </p>
@@ -144,9 +144,9 @@
                                              alt="">
                                      </div>
                                      <div class="detail-box">
-                                         <h5>
-                                             {{ $salad->name }}
-                                         </h5>
+                                         <a href="{{route('product.show',['product' => $salad->slug])}}">
+                                            {{ $salad->name }}
+                                        </a>
                                          <p>
                                              {{ $salad->description }}
                                          </p>
