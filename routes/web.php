@@ -19,3 +19,4 @@ Route::post('/',[ContactUsController::class,'store'])->name('contact.store');
 
 
 Route::get('/products/{product:slug}',[ProductController::class,'show'])->name('product.show');
+Route::get('/menu',[ProductController::class,'menu'])->name('product.menu');
