@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 
@@ -12,7 +11,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
-    <link rel="stylesheet" href="{{asset('/css/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
 
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
@@ -22,18 +21,18 @@
 
 <body>
 
-    <div class="{{request()->is('/') ? '' : 'sub_page'}}">
+    <div class="{{ request()->is('/') ? '' : 'sub_page' }}">
         <div class="hero_area">
             <div class="bg-box">
-                <img src="{{asset('/images/hero-bg.jpg')}}" alt="">
+                <img src="{{ asset('/images/hero-bg.jpg') }}" alt="">
             </div>
             <!-- header section strats -->
             <header class="header_section">
                 <div class="container">
                     <nav class="navbar navbar-expand-lg custom_nav-container">
-                        <a class="navbar-brand" href="{{route('home.index')}}">
+                        <a class="navbar-brand" href="{{ route('home.index') }}">
                             <span>
-                               moein.io
+                                moein.io
                             </span>
                         </a>
 
@@ -45,17 +44,17 @@
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mx-auto">
-                                <li class="nav-item {{request()->is('/') ? 'active' : ''}}">
-                                    <a class="nav-link" href="{{route('home.index')}}">صفحه اصلی</a>
+                                <li class="nav-item {{ request()->is('/') ? 'active' : '' }}">
+                                    <a class="nav-link" href="{{ route('home.index') }}">صفحه اصلی</a>
                                 </li>
-                                <li class="nav-item {{request()->is('menu') ? 'active' : ''}}">
-                                    <a class="nav-link" href="{{route('product.menu')}}">منو</a>
+                                <li class="nav-item {{ request()->is('menu') ? 'active' : '' }}">
+                                    <a class="nav-link" href="{{ route('product.menu') }}">منو</a>
                                 </li>
-                                <li class="nav-item {{request()->is('about-us') ? 'active' : ''}}">
-                                    <a class="nav-link" href="{{route('about.index')}}">درباره ما</a>
+                                <li class="nav-item {{ request()->is('about-us') ? 'active' : '' }}">
+                                    <a class="nav-link" href="{{ route('about.index') }}">درباره ما</a>
                                 </li>
-                                <li class="nav-item {{request()->is('contact-us') ? 'active' : ''}}">
-                                    <a class="nav-link" href="{{route('contact.index')}}">تماس باما</a>
+                                <li class="nav-item {{ request()->is('contact-us') ? 'active' : '' }}">
+                                    <a class="nav-link" href="{{ route('contact.index') }}">تماس باما</a>
                                 </li>
                             </ul>
                             <div class="user_option">
@@ -65,9 +64,17 @@
                                         3
                                     </span>
                                 </a>
-                                <a href="login.html" class="btn-auth">
-                                    ورود
-                                </a>
+                                @auth
+                                    <a href="#" class="btn-auth">
+                                        پروفایل
+                                    </a>
+                                @endauth
+                                @guest
+                                    <a href="login.html" class="btn-auth">
+                                        ورود
+                                    </a>
+                                @endguest
+
                             </div>
                         </div>
                     </nav>
@@ -75,7 +82,7 @@
             </header>
             <!-- end header section -->
             @if (request()->is('/'))
-            @include('home.slider')
+                @include('home.slider')
             @endif
 
         </div>
