@@ -66,10 +66,10 @@
                                                  </h6>
                                              @endif
                                              <div class="d-flex">
-                                                 <a class="me-2" href="">
+                                                 <a class="me-2" href="{{route('cart.increment',['product_id' => $burger->id,'qty' => 1])}}">
                                                      <i class="bi bi-cart-fill text-white fs-6"></i>
                                                  </a>
-                                                 <a href="">
+                                                 <a href="{{route('profile.addtoWishlist',['product_id' => $burger->id ])}}">
                                                      <i class="bi bi-heart-fill  text-white fs-6"></i>
                                                  </a>
                                              </div>
@@ -117,10 +117,10 @@
                                                  </h6>
                                              @endif
                                              <div class="d-flex">
-                                                 <a class="me-2" href="">
+                                                 <a class="me-2" href="{{route('cart.increment',['product_id' => $pizza->id,'qty' => 1])}}">
                                                      <i class="bi bi-cart-fill text-white fs-6"></i>
                                                  </a>
-                                                 <a href="">
+                                                 <a href="{{route('profile.addtoWishlist',['product_id' => $pizza->id ])}}">
                                                      <i class="bi bi-heart-fill  text-white fs-6"></i>
                                                  </a>
                                              </div>
@@ -168,10 +168,10 @@
                                                  </h6>
                                              @endif
                                              <div class="d-flex">
-                                                 <a class="me-2" href="">
+                                                 <a class="me-2" href="{{route('cart.increment',['product_id' => $salad->id,'qty' => 1])}}">
                                                      <i class="bi bi-cart-fill text-white fs-6"></i>
                                                  </a>
-                                                 <a href="">
+                                                 <a href="{{route('profile.addtoWishlist',['product_id' => $salad->id ])}}">
                                                      <i class="bi bi-heart-fill  text-white fs-6"></i>
                                                  </a>
                                              </div>

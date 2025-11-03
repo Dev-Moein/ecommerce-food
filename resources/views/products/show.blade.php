@@ -29,10 +29,12 @@
 
                             <p>{{ $product->description }}</p>
 
-                            <form x-data="{ quantity: 1 }" action="#" class="mt-5 d-flex">
+                            <form x-data="{ quantity: 1 }" action="{{route('cart.add')}}" class="mt-5 d-flex">
                                 <button class="btn-add">افزودن به سبد خرید</button>
+                                <input type="hidden" name="product_id" value="{{$product->id}}" >
+                                <input type="hidden" name="qty" :value="quantity" >
                                 <div class="input-counter ms-4">
-                                    <span @click="quantity++" class="plus-btn">
+                                    <span @click=" quantity < {{$product->quantity}} && quantity++" class="plus-btn">
                                         +
                                     </span>
                                     <div class="input-number" x-text="quantity"></div>
@@ -131,10 +133,10 @@
                                         @endif
 
                                         <div class="d-flex">
-                                            <a class="me-2" href="">
+                                            <a class="me-2" href="{{route('cart.increment',['product_id' => $product->id,'qty' => 1])}}">
                                                 <i class="bi bi-cart-fill text-white fs-6"></i>
                                             </a>
-                                            <a href="">
+                                            <a href="{{route('profile.addtoWishlist',['product_id' => $product->id ])}}">
                                                 <i class="bi bi-heart-fill text-white fs-6"></i>
                                             </a>
                                         </div>

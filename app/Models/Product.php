@@ -3,9 +3,10 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use App\Models\Order;
+use PhpParser\Node\Stmt\Switch_;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use PhpParser\Node\Stmt\Switch_;
 
 class Product extends Model
 {
@@ -42,7 +43,14 @@ class Product extends Model
                 $query->orderBy('price');
                 break;
                  case 'bestseller':
-                $query;
+                    $orders = Order::where('payment_status',1)->with('products')->get();
+                    $productIds = [];
+                    foreach($orders as $order){
+                        foreach($order->products as $product){
+                            array_push($productIds,$product->id);
+                        }
+                    }
+                $query->whereIn('id',array_keys(array_count_values($productIds)));
                 break;
                  case 'sale':
                 $query->where('sale_price' ,'!=' , 0)->where('date_on_sale_from', '<', Carbon::now())->where('date_on_sale_to', '>', Carbon::now());

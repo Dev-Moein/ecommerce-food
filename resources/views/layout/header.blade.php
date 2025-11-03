@@ -58,19 +58,19 @@
                                 </li>
                             </ul>
                             <div class="user_option">
-                                <a class="cart_link position-relative" href="cart.html">
+                                <a class="cart_link position-relative" href="{{route('cart.index')}}">
                                     <i class="bi bi-cart-fill text-white fs-5"></i>
                                     <span class="position-absolute top-0 translate-middle badge rounded-pill">
-                                        3
+                                        {{session()->has('cart') ? count(session()->get('cart')) : 0}}
                                     </span>
                                 </a>
                                 @auth
-                                    <a href="#" class="btn-auth">
+                                    <a href="{{route('profile.index')}}" class="btn-auth">
                                         پروفایل
                                     </a>
                                 @endauth
                                 @guest
-                                    <a href="login.html" class="btn-auth">
+                                    <a href="{{route('auth.login.form')}}" class="btn-auth">
                                         ورود
                                     </a>
                                 @endguest
